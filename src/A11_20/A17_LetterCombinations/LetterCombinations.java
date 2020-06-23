@@ -1,7 +1,9 @@
 package A11_20.A17_LetterCombinations;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by GYC
@@ -22,14 +24,15 @@ import java.util.List;
  */
 public class LetterCombinations {
     public static void main(String[] args) {
-        List<String> res = letterCombinations("23");
+        LetterCombinations lc=new LetterCombinations();
+        List<String> res = lc.letterCombinations("23");
         for (String s : res) {
             System.out.print(s+" ");
         }
     }
 
-    //通过while循环做
-    public static List<String> letterCombinations(String digits) {
+    //way1 通过while循环做
+    public static List<String> letterCombinations_1(String digits) {
         final int step = 2;
         final String[] table = new String[8];
         table[0] = "abc";
@@ -51,7 +54,7 @@ public class LetterCombinations {
 
         //如果长度为1，直接返回字母
         if (digitsLen == 1) {
-            String curStr = table[Integer.parseInt(digits)-2];
+            String curStr = table[Integer.parseInt(digits) - 2];
             int len = curStr.length();
             for (int i = 0; i < len; i++) {
                 res.add(curStr.substring(i, i + 1));
@@ -61,7 +64,7 @@ public class LetterCombinations {
 
         //如果长度大于1，和已有的List组合后添加
         String firstLetter = digits.substring(0, 1);
-        String curStr = table[Integer.parseInt(firstLetter)-2];
+        String curStr = table[Integer.parseInt(firstLetter) - 2];
 
         int len = curStr.length();
         for (int i = 0; i < len; i++) {
@@ -70,9 +73,9 @@ public class LetterCombinations {
         digits = digits.substring(1);//除去首字符后剩下的数字
         digitsLen = digits.length();
 
-        while (digitsLen > 0 ) {
+        while (digitsLen > 0) {
             firstLetter = digits.substring(0, 1);
-            curStr = table[Integer.parseInt(firstLetter)-2];
+            curStr = table[Integer.parseInt(firstLetter) - 2];
             len = curStr.length();
             List<String> temp = new ArrayList<>();
             int size = res.size();
@@ -87,5 +90,47 @@ public class LetterCombinations {
             digitsLen = digits.length();
         }
         return res;
+    }
+
+    //-----------------------------------------------------------------
+    //way2 通过递归做 回溯
+    Map<String, String> phone = new HashMap<String, String>() {{
+        put("2", "abc");
+        put("3", "def");
+        put("4", "ghi");
+        put("5", "jkl");
+        put("6", "mno");
+        put("7", "pqrs");
+        put("8", "tuv");
+        put("9", "wxyz");
+    }};
+
+    List<String> output = new ArrayList<String>();
+
+    public void backtrack(String combination, String next_digits) {
+        // if there is no more digits to check
+        if (next_digits.length() == 0) {
+            // the combination is done
+            output.add(combination);
+        }
+        // if there are still digits to check
+        else {
+            // iterate over all letters which map
+            // the next available digit
+            String digit = next_digits.substring(0, 1);
+            String letters = phone.get(digit);
+            for (int i = 0; i < letters.length(); i++) {
+                String letter = phone.get(digit).substring(i, i + 1);
+                // append the current letter to the combination
+                // and proceed to the next digits
+                backtrack(combination + letter, next_digits.substring(1));
+            }
+        }
+    }
+
+    public List<String> letterCombinations(String digits) {
+        if (digits.length() != 0)
+            backtrack("", digits);
+        return output;
     }
 }
