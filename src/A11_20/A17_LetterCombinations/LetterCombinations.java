@@ -25,12 +25,13 @@ import java.util.Map;
 public class LetterCombinations {
     public static void main(String[] args) {
         LetterCombinations lc=new LetterCombinations();
-        List<String> res = lc.letterCombinations("23");
+        List<String> res = lc.letterCombinations_22("23");
         for (String s : res) {
             System.out.print(s+" ");
         }
     }
 
+    //-----------------------------------------------------------------
     //way1 通过while循环做
     public static List<String> letterCombinations_1(String digits) {
         final int step = 2;
@@ -127,10 +128,37 @@ public class LetterCombinations {
             }
         }
     }
-
-    public List<String> letterCombinations(String digits) {
+    public List<String> letterCombinations_2(String digits) {
         if (digits.length() != 0)
             backtrack("", digits);
         return output;
+    }
+
+    //-----------------------------------------------------------------
+    //way2.2 回溯 自己写的
+    private final String[] table = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    public List<String> letterCombinations_22(String digits) {
+        if (digits.length() != 0)
+            myBackTrack("", digits);//初始用空的"" 参加运算
+        return res;
+    }
+    /**
+     * res 做为返回结果
+     */
+    List<String> res = new ArrayList<>();
+    /**
+     *
+     * @param subStr 已经组合成的字符串
+     * @param digits 传进来的命令参数，指示用哪个字符表，如果传进来的是空，就将subStr放入ArrayList
+     */
+    public void myBackTrack(String subStr,String digits) {
+        if (digits.length() == 0) {
+            res.add(subStr);
+        }else{
+            String curStr = table[Integer.parseInt(digits.substring(0, 1))-2];
+            for (int i = 0; i < curStr.length(); i++) {
+                myBackTrack(subStr + curStr.substring(i, i + 1), digits.substring(1));
+            }
+        }
     }
 }
