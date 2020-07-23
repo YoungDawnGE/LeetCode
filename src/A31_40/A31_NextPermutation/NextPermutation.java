@@ -107,7 +107,7 @@ public class NextPermutation {
 
     public static void main(String[] args) {
         NextPermutation np = new NextPermutation();
-        int[] arr = {1,5,1};
+        int[] arr = {9,8,7,6,5,4,3,2,1};
         for (int i : arr) {
             System.out.print(" " + i);
         }
