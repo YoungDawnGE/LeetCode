@@ -64,7 +64,7 @@ public class HammingWeight {
         }
         return count;
     }
-    //way3 采用n&n-1
+    //way3 采用n&n-1 最好的
     public int hammingWeight3(int n) {
         int count = 0;
         while (n != 0) {
