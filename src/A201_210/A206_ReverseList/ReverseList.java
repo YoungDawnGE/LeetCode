@@ -1,9 +1,5 @@
 package A201_210.A206_ReverseList;
 
-import org.w3c.dom.ls.LSInput;
-
-import java.util.List;
-
 /**
  * Created by GYC
  * 2020/7/24 10:31
