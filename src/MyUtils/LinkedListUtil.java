@@ -6,7 +6,7 @@ package MyUtils;
  */
 
 public class LinkedListUtil {
-    public static ListNode getIntList(int[] arr) {
+    public static ListNode getIntLinkedList(int[] arr) {
         ListNode head = new ListNode(-1);//哨兵
         ListNode cur = head;
         ListNode temp;
