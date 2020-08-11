@@ -19,4 +19,11 @@ public class LinkedListUtil {
         cur.next = null;
         return head.next;
     }
+
+    public static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+    }
 }
