@@ -1,0 +1,22 @@
+package MyUtils;
+
+/**
+ * Created by GYC
+ * 2020/8/13 15:08
+ */
+public class ArrayUtil<T> {
+    public static void printArray(T[][] array) {
+        int height = array.length;
+        if (height == 0) {
+            System.out.println("null");
+            return;
+        }
+        int width = array[0].length;
+        for (int i = 0; i <height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(" " + array[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
