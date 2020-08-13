@@ -3,8 +3,6 @@ package A141_150.A148_SortList;
 import MyUtils.LinkedListUtil;
 import MyUtils.ListNode;
 
-import java.util.LinkedList;
-
 /**
  * Created by GYC
  * 2020/8/5 17:31
