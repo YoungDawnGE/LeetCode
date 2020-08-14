@@ -48,15 +48,9 @@ public class GetIntersectionNode {
         ListNode head1 = headA;//哨兵节点,保留headA的值
         ListNode head2 = headB;
         while (head1 != head2) {
-            if (head1 == null)
-                head1 = headB;
-            else
-                head1 = head1.next;
-
-            if (head2 == null)
-                head2 = headA;
-            else
-                head2 = head2.next;
+            head1 = head1 == null ? headB : head1.next;
+            head2 = head2 == null ? headA : head2.next;
+            //如果不相交，最后他们都会指向null，也会退出循环的。
         }
         return head1;
     }
