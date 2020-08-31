@@ -5,7 +5,7 @@ package MyUtils;
  * 2020/8/13 15:08
  */
 public class ArrayUtil {
-    public static void printArray(boolean[][] array){
+    public static void printArray2D(boolean[][] array){
         int height = array.length;
         if (height == 0) {
             System.out.println("null");
@@ -19,7 +19,7 @@ public class ArrayUtil {
             System.out.println();
         }
     }
-    public static void printArray(int[][] array){
+    public static void printArray2D(int[][] array){
         int height = array.length;
         if (height == 0) {
             System.out.println("null");
@@ -33,7 +33,7 @@ public class ArrayUtil {
             System.out.println();
         }
     }
-    public static void printArray(char[][] array){
+    public static void printArray2D(char[][] array){
         int height = array.length;
         if (height == 0) {
             System.out.println("null");
@@ -55,7 +55,7 @@ public class ArrayUtil {
             return;
         }
         for (int i = 0; i < len; i++) {
-            System.out.print(array[i] + " ");
+            System.out.print(" "+array[i]);
         }
         System.out.println();
     }
@@ -67,7 +67,7 @@ public class ArrayUtil {
             return;
         }
         for (int i = 0; i < len; i++) {
-            System.out.print(array[i] + " ");
+            System.out.print(" "+array[i]);
         }
         System.out.println();
     }
@@ -79,7 +79,7 @@ public class ArrayUtil {
             return;
         }
         for (int i = 0; i < len; i++) {
-            System.out.print(array[i] + " ");
+            System.out.print(" "+array[i]);
         }
         System.out.println();
     }
