@@ -19,7 +19,7 @@ import MyUtils.ArrayUtil;
  */
 public class MoveZeros {
     public static void main(String[] args) {
-        int[] input = {0, 1, 0, 3, 12};
+        int[] input = {2,0,0,1};
         ArrayUtil.printArray(input);
         new MoveZeros().moveZeroes(input);
         ArrayUtil.printArray(input);
@@ -30,10 +30,14 @@ public class MoveZeros {
         int len = nums.length;
         int pos = 0;//用一个pos记录非0的存储到哪了
         for (int i = 0; i < len; i++) {
-            if (nums[i] != 0) {
-                nums[pos++] = nums[i];
+            if (nums[i] == 0) {
+                continue;
+            }
+            if (pos != i) {
+                nums[pos] = nums[i];
                 nums[i] = 0;
             }
+            pos++;
         }
     }
 }
