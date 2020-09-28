@@ -26,7 +26,7 @@ import MyUtils.ArrayUtil;
 public class SolveNQueue {
 
     public static void main(String[] args) {
-        new SolveNQueue().solveNQueens(4);
+        new SolveNQueue().solveNQueens(10);
     }
     public void solveNQueens(int n) {
         //按顺序填充每一行，只要记录当前列是否被占用就OK
