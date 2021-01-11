@@ -8,7 +8,7 @@ package A00_FA;
 public class QuickSort {
     public static void main(String[] args) {
 
-        int[] array = {5,4,2,69,10};
+        int[] array = {5,4,2,69,10,10,2131,331,3,20,14,4354,345,332,13,4,1432,22,456,147,976};
         for (int k : array) {
             System.out.print(" " + k);
         }
