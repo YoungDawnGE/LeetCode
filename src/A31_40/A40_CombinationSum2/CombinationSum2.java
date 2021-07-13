@@ -1,7 +1,6 @@
 package A31_40.A40_CombinationSum2;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by GYC
@@ -38,7 +37,8 @@ public class CombinationSum2 {
     public static void main(String[] args) {
         int[] candidates = {2,2,2,2,2,2};
         int target = 2;
-        List<List<Integer>> result = new CombinationSum2().combinationSum2(candidates, target);
+//        List<List<Integer>> result = new CombinationSum2().combinationSum2(candidates, target);
+        List<List<Integer>> result = new CombinationSum2().combinationSum2_2(candidates, target);
         System.out.println("共几个结果"+result.size());
         for (List<Integer> aList : result) {
             for (int val : aList) {
@@ -47,6 +47,56 @@ public class CombinationSum2 {
             System.out.println();
         }
     }
+
+
+
+    //way2 2021-07-13 第二次来做此题 回溯
+    public List<List<Integer>> combinationSum2_2(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        List<List<Integer>> res = new ArrayList<>();
+
+        Deque<Integer> path = new ArrayDeque<>();
+        backTrack_2(candidates, 0, target, res, path, 0);
+        return new ArrayList<>(res);
+    }
+
+    /**
+     * @param candidate 输入的数组
+     * @param sum       当前的和
+     * @param target    目标和
+     * @param res       最终结果集
+     * @param path      子结果：路径
+     * @param idx       记录当前操作的最大的 candidate 的下标
+     *                  注意
+     *                  1 中间状态的保存
+     *                  2 确定终止结果
+     *                    1,2,2,2,5
+     */
+    public static void backTrack_2(int[] candidate, int sum, int target, List<List<Integer>> res, Deque<Integer> path, int idx) {
+        if (sum == target) {
+            res.add(new ArrayList<>(path));
+            return;//再深入会导致sum>target
+        }
+        //达到层数，或者sum都大于target了，就没必要往下遍历了
+        if (idx > candidate.length - 1 || sum > target) {
+            return;
+        }
+
+
+        for (int i = idx; i < candidate.length; i++) {
+            // 保证同一层中和上一次枚举的元素不相等
+            if (i > idx && candidate[i] == candidate[i - 1]) {
+                continue;
+            }
+            path.addLast(candidate[i]);
+            backTrack_2(candidate, sum + candidate[i], target, res, path, i + 1);
+            path.removeLast();
+        }
+    }
+
+
+
+
 
 
     //way1  我第一次用回溯 存在一个问题就是 无法去重
@@ -92,6 +142,6 @@ public class CombinationSum2 {
         }
     }
 
-    //way2 官网解法
+    //way3 官网解法
 
 }
