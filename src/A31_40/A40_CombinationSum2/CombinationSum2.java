@@ -35,8 +35,8 @@ import java.util.*;
  */
 public class CombinationSum2 {
     public static void main(String[] args) {
-        int[] candidates = {2,2,2,2,2,2};
-        int target = 2;
+        int[] candidates = {10,1,2,7,6,1,5};
+        int target = 8;
 //        List<List<Integer>> result = new CombinationSum2().combinationSum2(candidates, target);
         List<List<Integer>> result = new CombinationSum2().combinationSum2_2(candidates, target);
         System.out.println("共几个结果"+result.size());
@@ -82,9 +82,11 @@ public class CombinationSum2 {
             return;
         }
 
-
+        //1 1 2 5 6
         for (int i = idx; i < candidate.length; i++) {
             // 保证同一层中和上一次枚举的元素不相等
+            // 必须用i>idx(保证了在同一层) 不能用i>0
+            // 小剪枝：同一层相同数值的结点，从第 2 个开始，候选数更少，结果一定发生重复，因此跳过，用 continue
             if (i > idx && candidate[i] == candidate[i - 1]) {
                 continue;
             }
