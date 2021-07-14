@@ -62,7 +62,7 @@ public class UniquePathsWithObstacles {
                     continue;
                 }
                 if (j - 1 >= 0 && obstacleGrid[i][j-1] == 0) {
-                    f[j] += f[j - 1];
+                    f[j] += f[j - 1];//等于dp[i][j]=dp[i-1][j]+dp[i][j-1]
                 }
             }
         }
