@@ -13,7 +13,8 @@ public class QuickSort {
             System.out.print(" " + k);
         }
         System.out.println();
-        quickSort(array, 0, array.length-1);
+//        quickSort(array, 0, array.length-1);
+        quickSort_20210818(0, array.length - 1, array);
         for (int j : array) {
             System.out.print(" " + j);
         }
@@ -52,6 +53,33 @@ public class QuickSort {
     public void swap(int i,int j, int[] array){
         int temp = array[i];
         array[i] = array[j];
-        array[j] = array[i];
+        array[j] = temp;
+    }
+
+    public static void quickSort_20210818(int left, int right, int[] nums) {
+        int l = left;
+        int r = right;
+
+        if (l < r) {
+            int pivot = nums[l];
+            while (l < r) {
+                while (l < r && nums[r] > pivot) {
+                    r--;
+                }
+                if (l < r) {
+                    nums[l++] = nums[r];
+                }
+
+                while (l < r && nums[l] <= pivot) {
+                    l++;
+                }
+                if (l < r) {
+                    nums[r--] = nums[l];
+                }
+            }
+            nums[l] = pivot;
+            quickSort_20210818(left, l - 1, nums);
+            quickSort_20210818(l + 1, right, nums);
+        }
     }
 }
