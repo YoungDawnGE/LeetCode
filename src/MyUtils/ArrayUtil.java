@@ -33,6 +33,23 @@ public class ArrayUtil {
             System.out.println();
         }
     }
+
+    public static void printArray2D(long[][] array){
+        int height = array.length;
+        if (height == 0) {
+            System.out.println("null");
+            return;
+        }
+        int width = array[0].length;
+        for (int i = 0; i <height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(" " + array[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+
     public static void printArray2D(char[][] array){
         int height = array.length;
         if (height == 0) {
@@ -73,6 +90,18 @@ public class ArrayUtil {
     }
 
     public static void printArray(int[] array){
+        int len = array.length;
+        if (len == 0) {
+            System.out.println("null");
+            return;
+        }
+        for (int i = 0; i < len; i++) {
+            System.out.print(" "+array[i]);
+        }
+        System.out.println();
+    }
+
+    public static void printArray(long[] array){
         int len = array.length;
         if (len == 0) {
             System.out.println("null");
